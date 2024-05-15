@@ -72,11 +72,12 @@ $('body').prepend($ele);
                     'template': 'markdown'
                 },
                 success: function(data) {
-                    console.log("Send Success!");
-                    console.log(data);
+                    console.log("发送成功!");
+                    console.log(data.msg);
                 },
                 error: function(error) {
                     console.error('Error:', error);
+                    console.log(error);
                 }
             });
         }
