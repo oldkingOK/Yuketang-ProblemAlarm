@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Mouseout vs Mouseleave</title>
+    <meta charset="utf-8">
+
+</head>
+<body>
+
+<button onclick="hide()">Change Token</button>
+
+<div id="search" hidden style="width: 500px;height: 150px;position: fixed;top: 10%;left: 0;z-index: 10;">
+    <div class="serf" style="height: 100px;width: 320px;border: #000000 solid 2px;box-sizing: border-box;padding-left: 50px;background-color: #cccccc;">
+        <h2 style="margin-bottom: 5px">Change Token</h2>
+        <div class="ser">
+            <form id="searchForm"  method="GET">
+                <input type="text" id="searchInput" name="query" placeholder="Enter your search term">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function hide() {
+        search.hidden = !search.hidden;
+    }
+
+    let getToken = function (){
+        return "";
+    }
+    let saveToken = function (token){
+        return ;
+    }
+    let test = function(){
+        'use strict';
+        // 要求用户输入universyu_token 而不是指定的常数
+        var universyu_token = getToken();
+        if(!universyu_token)
+            universyu_token = prompt("Please enter your token");
+        saveToken(universyu_token);
+        var temp = console.log
+        console.log = function(args)
+        {
+            temp(args)
+            if (args.op && (args.op == "probleminfo" || args.op == "unlockproblem")) {
+                $.ajax({
+                    url: 'https://www.pushplus.plus/send',
+                    type: 'GET',
+                    data: {
+                        'token': universyu_token,
+                        'title': '有新的答题了！',
+                        'content': '# 有新的答题了！',
+                        'template': 'markdown'
+                    },
+                    success: function(data) {
+                        console.log("Send Success!")
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+        }
+        console.log("插件加载完成！")
+    };
+    test();
+
+</script>
+
+
+
+
+
+</body>
+</html>
