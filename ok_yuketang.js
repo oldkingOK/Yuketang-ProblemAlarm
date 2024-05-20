@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         雨课堂答题提醒
-// @namespace    http://tampermonkey.net/
+// @namespace    https://greasyfork.org/zh-CN/users/1269309/h1t52_crack
 // @version      2024-05-15
 // @description  owo
 // @author       oldkingOK
@@ -11,6 +11,7 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        unsafeWindow
+// @license      MIT
 // ==/UserScript==
 
 function setToken(token) {
